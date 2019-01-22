@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./aes.js"></script>
+	<script type="text/javascript" src="./pad-zeropadding-min.js"></script>
+</head>
+<body>
+	
+<script type="text/javascript">
+    fetch('http://192.168.31.173/bbq/public/api/v1/theme', {
+      method: "GET",
+      headers: {
+          "sign": 'a34f0f55d87aea82552ee74ca0a1426bee489a9db207e3337aad6321f506d1d70589de6bc82587e3925d120c52e2344c6d4a458387aa396b4852aab62bfbfebbd1ca367f17b72f62a8e6428ebfbe117e',
+          "app_type": 'android',
+          "did": '869795061194028'
+      },
+    })
+    .then((response) => {
+      response.json();
+    })
+    .then((responseData) => {
+      Alert.alert(typeof(responseData));
+    })
+    .catch((error) => {
+      Alert.alert(error.toString());
+    })
+    .done();
+</script>
+<!--<script type="text/javascript">
+        var iv = 'token1234BBQ4321';
+        var data = "asdfghjklmnbvcxz";
+        console.log('JS加密前：'+data);
+        var key = CryptoJS.enc.Hex.parse('bbq_aes');
+        var ivv = CryptoJS.enc.Hex.parse(iv);
+        var encrypted = CryptoJS.AES.encrypt(data, key, { iv: ivv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.ZeroPadding });
+        // data = encrypted.toString();
+        data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        var msg = {'data':data,'iv':iv};
+        console.log('JS加密后：'+data);
+</script>-->
+</body>
+</html>
